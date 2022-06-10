@@ -1,0 +1,16 @@
+#Makefile
+
+Code2: Code2.o pole.a objetosc.so
+	gcc -o Code2 Code2.o pole.a objetosc.so -Wl,-rpath=/home/student/project2
+Code2.o: Code2.c pole.h objetosc.h
+	gcc -c Code2.c
+pole.a: pole.o
+	ar cr pole.a pole.o
+objetosc.so: objetosc.o
+	gcc -shared -o objetosc.so objetosc.o
+pole.o: pole.c
+	gcc -c pole.c
+objetosc.o: objetosc.c
+	gcc -c objetosc.c
+clean:
+	rm -f *o *.a *.so Code2
