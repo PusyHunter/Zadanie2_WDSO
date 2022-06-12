@@ -8,3 +8,5 @@
 	Rozbudowa pliku Makefile o zmienne automatyczne
 4-commit:
 	Dodanie reguły przyrostków
+5-commit:
+	Dodanie reguł wzorca

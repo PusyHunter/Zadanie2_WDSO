@@ -3,18 +3,18 @@
 .PHONY: clean
 .SUFFIXES: .c .o .a .so .h
 
-Code2: Code2.o pole.a objetosc.so
-	#gcc -o Code2 Code2.o pole.a objetosc.so -Wl,-rpath=/home/student/project2
-	$(CC) -o $@ $^ -Wl,-rpath=/home/student/project2
+#Code2: Code2.o pole.a objetosc.so
+#	gcc -o Code2 Code2.o pole.a objetosc.so -Wl,-rpath=/home/student/project2
+#	$(CC) -o $@ $^ -Wl,-rpath=/home/student/project2
 #Code2.o: Code2.c pole.h objetosc.h
 #	gcc -c Code2.c
 #	$(CC) -c $<
-pole.a: pole.o
-	#ar cr pole.a pole.o
-	$(AR) cr $@ $<
-objetosc.so: objetosc.o
-	#gcc -shared -o objetosc.so objetosc.o
-	$(CC) -shared -o $@ $<
+#pole.a: pole.o
+#	ar cr pole.a pole.o
+#	$(AR) cr $@ $<
+#objetosc.so: objetosc.o
+#	gcc -shared -o objetosc.so objetosc.o
+#	$(CC) -shared -o $@ $<
 #pole.o: pole.c
 #	gcc -c pole.c
 #	$(CC) -c $<
@@ -23,10 +23,21 @@ objetosc.so: objetosc.o
 #	$(CC) -c $<
 
 #reguły przyrostków
+#reguły wzorca
+
+%: %.o
+	gcc -o $@ $^ -Wl,-rpath=/home/student/project2
 .c.o:
 	gcc -c $<
+%.a: %.o
+	ar cr $@ $<
+%.so: %.o
+	gcc -shared -o $@ $<
 
+Code2: Code2.o pole.a objetosc.so
 Code2.o: Code2.c pole.h objetosc.h
+pole.a: pole.o
+objetosc.so: objetosc.o
 pole.o: pole.c
 objetosc.o: objetosc.c
 
