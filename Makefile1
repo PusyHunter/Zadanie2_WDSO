@@ -1,23 +1,35 @@
 #Makefile
 
+.PHONY: clean
+.SUFFIXES: .c .o .a .so .h
+
 Code2: Code2.o pole.a objetosc.so
 	#gcc -o Code2 Code2.o pole.a objetosc.so -Wl,-rpath=/home/student/project2
 	$(CC) -o $@ $^ -Wl,-rpath=/home/student/project2
-Code2.o: Code2.c pole.h objetosc.h
-	#gcc -c Code2.c
-	$(CC) -c $<
+#Code2.o: Code2.c pole.h objetosc.h
+#	gcc -c Code2.c
+#	$(CC) -c $<
 pole.a: pole.o
 	#ar cr pole.a pole.o
 	$(AR) cr $@ $<
 objetosc.so: objetosc.o
 	#gcc -shared -o objetosc.so objetosc.o
 	$(CC) -shared -o $@ $<
+#pole.o: pole.c
+#	gcc -c pole.c
+#	$(CC) -c $<
+#objetosc.o: objetosc.c
+#	gcc -c objetosc.c
+#	$(CC) -c $<
+
+#reguły przyrostków
+.c.o:
+	gcc -c $<
+
+Code2.o: Code2.c pole.h objetosc.h
 pole.o: pole.c
-	#gcc -c pole.c
-	$(CC) -c $<
 objetosc.o: objetosc.c
-	#gcc -c objetosc.c
-	$(CC) -c $<
+
 clean:
 	#rm -f *.o *.a *.so Code2
 	$(RM) -f *.o *.a *.so Code2
