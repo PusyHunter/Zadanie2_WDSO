@@ -3,7 +3,6 @@
 	inicjalizacja repo
 	Program liczy pole kwadratu oraz objetosc szeszcianu
 2-commit:
-	Dodanie najprostszego Makefile
-	
+	Dodanie najprostszego Makefile	
 3-commit:
 	Rozbudowa pliku Makefile o zmienne automatyczne
